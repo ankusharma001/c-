@@ -117,6 +117,7 @@ int main()
     int * integervalue= (int *)ptrsd;
 
     cout<<*integervalue<<" ";
-    //nthb
+
+    
   return 0;
 }
