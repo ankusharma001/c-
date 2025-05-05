@@ -8,8 +8,8 @@
       "args": [],
       "stopAtEntry": false,
       "externalConsole": true,
-      "cwd": "c:/Users/Ankush Sharma/OneDrive/Desktop/CODES/c-/Recursion",
-      "program": "c:/Users/Ankush Sharma/OneDrive/Desktop/CODES/c-/Recursion/build/Debug/outDebug",
+      "cwd": "c:/Users/Ankush Sharma/OneDrive/Desktop/CODES/c-/Binary Tree/BST",
+      "program": "c:/Users/Ankush Sharma/OneDrive/Desktop/CODES/c-/Binary Tree/BST/build/Debug/outDebug",
       "MIMode": "gdb",
       "miDebuggerPath": "gdb",
       "setupCommands": [

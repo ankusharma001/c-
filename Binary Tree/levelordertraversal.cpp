@@ -66,6 +66,55 @@ vector<vector<int>> levelorder(bnode* root)
 
 }
 
+vector <vector <int>> level(bnode* root)
+{
+  vector <vector <int>> arr ;
+
+  if ( root == nullptr )
+  {
+    return arr;
+  }
+
+  queue <bnode*> q;
+   q.push(root);
+
+   while(!q.empty())
+   {
+    int size = q.size();
+
+    vector<int> tempar;
+
+    for(int i =0;i< size;i++)
+      
+    {
+        bnode * temp = q.front();
+
+        
+
+        q.pop();
+        tempar.push_back(temp -> data);
+
+        if ( temp -> left != nullptr)
+        {
+         
+          q.push(temp ->left);
+
+        }
+        if ( temp -> right != nullptr)
+        {
+          
+          q.push(temp -> right);
+        }
+
+
+      }
+      arr.push_back(tempar);
+    
+
+    }
+   
+}
+
 
 
 bnode * build (int arr[])
