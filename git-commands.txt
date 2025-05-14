@@ -4,7 +4,6 @@
 | Command                                    | Description                                                      | Usage Condition                                                        | Example                                             |
 | ------------------------------------------ | ---------------------------------------------------------------- | ---------------------------------------------------------------------- | --------------------------------------------------- |
 | `git init`                                 | Initializes a new Git repository in the current directory.       | Use when starting a new project to create a local Git repository.      | `git init my-project`                               |
-|---------|-------------|-----------------|---------|
 | `git config --global user.name "[name]"`   | Sets the user name for commits globally.                         | Use when setting up Git for the first time or updating user info.      | `git config --global user.name "John Doe"`          |
 | `git config --global user.email "[email]"` | Sets the user email for commits globally.                        | Use when setting up Git or changing the email associated with commits. | `git config --global user.email "john@example.com"` |
 | `git config --list`                        | Displays all Git configuration settings (local, global, system). | Use to verify or review current Git configurations.                    | `git config --list`                                 |
