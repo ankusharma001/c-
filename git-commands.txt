@@ -1,0 +1,101 @@
+# Git Commands Reference Guide
+
+## Setup & Configuration
+| Command                                    | Description                                                      | Usage Condition                                                        | Example                                             |
+| ------------------------------------------ | ---------------------------------------------------------------- | ---------------------------------------------------------------------- | --------------------------------------------------- |
+| `git init`                                 | Initializes a new Git repository in the current directory.       | Use when starting a new project to create a local Git repository.      | `git init my-project`                               |
+| `git config --global user.name "[name]"`   | Sets the user name for commits globally.                         | Use when setting up Git for the first time or updating user info.      | `git config --global user.name "John Doe"`          |
+| `git config --global user.email "[email]"` | Sets the user email for commits globally.                        | Use when setting up Git or changing the email associated with commits. | `git config --global user.email "john@example.com"` |
+| `git config --list`                        | Displays all Git configuration settings (local, global, system). | Use to verify or review current Git configurations.                    | `git config --list`                                 |
+
+## Basic Workflow
+
+| Command                        | Description                                                            | Usage Condition                                                        | Example                                   |
+| ------------------------------ | ---------------------------------------------------------------------- | ---------------------------------------------------------------------- | ----------------------------------------- |
+| `git status`                   | Shows the current state of the working directory and staging area.     | Use to check which files are modified, staged, or untracked.           | `git status`                              |
+| `git add <file>`               | Stages changes in a specific file for the next commit.                 | Use when you want to include specific file changes in the next commit. | `git add file.txt`                        |
+| `git add .`                    | Stages all changes (modified, new, deleted) in the current directory.  | Use to stage all changes in the working directory for the next commit. | `git add .`                               |
+| `git commit -m "[message]"`    | Commits staged changes to the repository with a message.               | Use after staging changes to save them to the local repository.        | `git commit -m "Add new feature"`         |
+| `git commit -a`                | Stages and commits all modified/deleted tracked files.                 | Use to skip manual git add for tracked files, but not for new files.   | `git commit -a -m "Update files"`         |
+| `git commit --amend`           | Modifies the most recent commit (e.g., changes message or adds files). | Use to fix the last commit's message or include forgotten files.       | `git commit --amend -m "Updated message"` |
+| `git diff`                     | Shows differences between the working directory and staged changes.    | Use to review unstaged changes before staging.                         | `git diff`                                |
+| `git diff --cached`            | Shows differences between staged changes and the last commit.          | Use to review staged changes before committing.                        | `git diff --cached`                       |
+| `git diff <commit1> <commit2>` | Shows differences between two commits or branches.                     | Use to compare changes between specific commits or branches.           | `git diff main feature`                   |
+
+
+## Branching
+
+| Command                         | Description                                                               | Usage Condition                                                         | Example                       |
+| ------------------------------- | ------------------------------------------------------------------------- | ----------------------------------------------------------------------- | ----------------------------- |
+| `git branch`                    | Lists all local branches in the repository.                               | Use to see available branches or check the current branch.              | `git branch`                  |
+| `git branch <branch_name>`      | Creates a new branch.                                                     | Use when starting work on a new feature or bug fix.                     | `git branch new-feature`      |
+| `git branch -d <branch_name>`   | Deletes a branch (if fully merged).                                       | Use to clean up a branch after merging it into another branch.          | `git branch -d new-feature`   |
+| `git checkout <branch_name>`    | Switches to the specified branch.                                         | Use to work on a different branch.                                      | `git checkout feature`        |
+| `git checkout -b <branch_name>` | Creates and switches to a new branch.                                     | Use to start working on a new feature immediately.                      | `git checkout -b new-feature` |
+| `git switch <branch_name>`      | Switches to the specified branch (modern alternative to checkout).        | Use as a clearer way to switch branches (introduced in Git 2.23).       | `git switch feature`          |
+| `git switch -c <branch_name>`   | Creates and switches to a new branch (modern alternative to checkout -b). | Use to create and switch to a new branch in one step.                   | `git switch -c new-feature`   |
+| `git merge <branch_name>`       | Merges the specified branch into the current branch.                      | Use to integrate changes from one branch (e.g., feature) into another\_ |                               |
+
+## Remote Operations
+
+| Command                                     | Description                                                                  | Usage Condition                                         | Example                                                  |
+| ------------------------------------------- | ---------------------------------------------------------------------------- | ------------------------------------------------------- | -------------------------------------------------------- |
+| `git clone <url>`                           | Copies a remote repository to a local directory.                             | Use to download a repository to your local machine.     | `git clone https://github.com/user/repo.git`             |
+| `git remote add <name> <url>`               | Adds a remote repository with a specified name (e.g., origin).               | Use to link a local repository to a remote one.         | `git remote add origin https://github.com/user/repo.git` |
+| `git remote -v`                             | Lists all remote repositories and their URLs.                                | Use to verify remote connections.                       | `git remote -v`                                          |
+| `git push`                                  | Pushes committed changes to the default remote branch.                       | Use to upload local commits to a remote repository.     | `git push`                                               |
+| `git push <remote> <branch>`                | Pushes a specific branch to a remote repository.                             | Use to push a specific branch, especially new ones.     | `git push origin feature`                                |
+| `git push --set-upstream <remote> <branch>` | Pushes a branch and sets the upstream for future pushes.                     | Use for new branches to link them to the remote.        | `git push --set-upstream origin feature`                 |
+| `git push <remote> --tags`                  | Pushes all local tags to the remote repository.                              | Use to share tags (e.g., version tags) with the remote. | `git push origin --tags`                                 |
+| `git pull`                                  | Fetches and merges changes from the remote repository to the current branch. | Use to update your local branch with remote changes.    | `git pull`                                               |
+| `git fetch`                                 | Downloads changes from a remote repository without merging.                  | Use to review remote changes before merging.            | `git fetch origin`                                       |
+
+## Undoing Changes
+
+| Command                     | Description                                                         | Usage Condition                                                                       | Example                  |
+| --------------------------- | ------------------------------------------------------------------- | ------------------------------------------------------------------------------------- | ------------------------ |
+| `git reset <file>`          | Unstages a file but preserves its contents.                         | Use to remove a file from the staging area before committing.                         | `git reset file.txt`     |
+| `git reset --hard <commit>` | Resets the branch to a specific commit, discarding all changes.     | Use to completely undo changes back to a specific commit (use with caution).          | `git reset --hard HEAD^` |
+| `git revert <commit>`       | Creates a new commit that undoes the changes of a specified commit. | Use to safely undo a commit without altering history, especially for shared branches. | `git revert abc123`      |
+| `git clean -f`              | Removes untracked files from the working directory.                 | Use to clean up untracked files (e.g., temporary files).                              | `git clean -f`           |
+| `git clean -n`              | Previews untracked files that would be deleted by git clean -f.     | Use to check what git clean will remove before executing.                             | `git clean -n`           |
+
+## History & Inspection
+
+| Command                            | Description                                                           | Usage Condition                                                       | Example                            |
+| ---------------------------------- | --------------------------------------------------------------------- | --------------------------------------------------------------------- | ---------------------------------- |
+| `git log`                          | Shows the commit history of the current branch.                       | Use to review the commit history and details (author, date, message). | `git log`                          |
+| `git log --graph --pretty=oneline` | Displays a concise commit history with a graph of branches.           | Use to visualize branch history and merges.                           | `git log --graph --pretty=oneline` |
+| `git show <commit>`                | Shows details and changes of a specific commit.                       | Use to inspect the changes introduced by a specific commit.           | `git show abc123`                  |
+| `git blame <file>`                 | Shows who last modified each line of a file and in which commit.      | Use to investigate the history of changes to a file.                  | `git blame file.txt`               |
+| `git reflog`                       | Shows a log of changes to the HEAD reference (e.g., commits, resets). | Use to recover lost commits or track branch changes.                  | `git reflog`                       |
+
+## Stashing
+
+| Command                   | Description                                                              | Usage Condition                                                             | Example                     |
+| ------------------------- | ------------------------------------------------------------------------ | --------------------------------------------------------------------------- | --------------------------- |
+| `git stash`               | Temporarily saves modified tracked files and reverts to the last commit. | Use when you want to switch branches without committing incomplete changes. | `git stash`                 |
+| `git stash list`          | Lists all stashed changesets.                                            | Use to view all stashes in the repository.                                  | `git stash list`            |
+| `git stash apply <stash>` | Applies a specific stash to the working directory without removing it.   | Use to restore stashed changes without clearing the stash.                  | `git stash apply stash@{0}` |
+| `git stash pop`           | Applies the most recent stash and removes it from the stash list.        | Use to restore the latest stash and clear it.                               | `git stash pop`             |
+| `git stash clear`         | Removes all stashes from the repository.                                 | Use to delete all stashed changes when they're no longer needed.            | `git stash clear`           |
+
+## Tagging
+
+| Command                 | Description                                                | Usage Condition                                           | Example           |
+| ----------------------- | ---------------------------------------------------------- | --------------------------------------------------------- | ----------------- |
+| `git tag <tag_name>`    | Creates a tag for the current commit (e.g., for releases). | Use to mark a specific commit, such as a release version. | `git tag v1.0`    |
+| `git tag`               | Lists all tags in the repository.                          | Use to view available tags.                               | `git tag`         |
+| `git tag -d <tag_name>` | Deletes a tag from the local repository.                   | Use to remove a tag that's no longer needed.              | `git tag -d v1.0` |
+
+## Advanced
+| Command                    | Description                                                       | Usage Condition                                                      | Example                  |
+| -------------------------- | ----------------------------------------------------------------- | -------------------------------------------------------------------- | ------------------------ |
+| `git rebase <branch>`      | Reapplies commits from the current branch onto another branch.    | Use to create a linear history or update a feature branch with main. | `git rebase main`        |
+| `git rebase -i <commit>`   | Starts an interactive rebase to edit, squash, or reorder commits. | Use to clean up or modify commit history before pushing.             | `git rebase -i HEAD~3`   |
+| `git rebase --continue`    | Continues a rebase after resolving conflicts.                     | Use after resolving conflicts during an interactive rebase.          | `git rebase --continue`  |
+| `git rebase --abort`       | Cancels a rebase and restores the previous state.                 | Use to stop a rebase if conflicts or issues arise.                   | `git rebase --abort`     |
+| `git bisect start`         | Starts a binary search to find a commit that introduced a bug.    | Use to debug by identifying the commit that caused an issue.         | `git bisect start`       |
+| `git bisect good <commit>` | Marks a commit as good (known to be working).                     | Use as part of the bisect process to narrow down the bad commit.     | `git bisect good abc123` |
+
+
