@@ -11,7 +11,7 @@ data hiding is not possible in structure u  can use function
 clss --> extenstion of structure
 
 structurer has limitations -> memebers are public
-                           -> no metheds
+                           -> no methods
  classes = structures + more
  classes -> can have motheds and properties
  classes -> can make few membeers as private & few as public
